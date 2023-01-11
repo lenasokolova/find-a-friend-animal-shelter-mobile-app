@@ -1,11 +1,10 @@
 import { View, Text, ScrollView } from 'react-native'
 import React from 'react'
 import SectionCard from './SectionCard';
-import { AntDesign } from '@expo/vector-icons';
 
 const Sections = () => {
     return (
-        <View classname="">
+        <View>
             <View className="mt-4 ">
                 <Text className="font-bold text-lg">Shelters near you</Text>
             </View>
