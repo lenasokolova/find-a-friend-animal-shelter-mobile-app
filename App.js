@@ -2,6 +2,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from './screens/HomeScreen';
 import ShelterScreen from './screens/ShelterScreen';
+import PetScreen from './screens/PetScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -12,6 +13,7 @@ export default function App() {
         {/* Screens */}
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Shelter" component={ShelterScreen} />
+        <Stack.Screen name="Pet" component={PetScreen} />
 
       </Stack.Navigator>
 
