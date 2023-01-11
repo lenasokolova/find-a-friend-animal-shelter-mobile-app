@@ -1,7 +1,6 @@
 import { View, Text, TextInput, Image } from 'react-native'
 import React, { useLayoutEffect } from 'react'
 import { useNavigation } from '@react-navigation/native';
-import { AntDesign } from '@expo/vector-icons';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Categories from '../components/Categories';
 import Sections from '../components/Sections';
