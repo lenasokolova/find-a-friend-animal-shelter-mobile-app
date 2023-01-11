@@ -8,7 +8,6 @@ const Categories = () => {
             horizontal
             showsHorizontalScrollIndicator={false}
             contentContainerStyle={{
-                paddingHorizontal: 15,
                 paddingTop: 10,
             }}
         >
