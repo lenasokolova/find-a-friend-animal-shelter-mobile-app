@@ -14,7 +14,7 @@ const Categories = () => {
             <CategoryButton title='Dogs' />
             <CategoryButton title='Cats' />
             <CategoryButton title='Birds' />
-            <CategoryButton title='City' />
+            <CategoryButton title='Retirees' />
             <CategoryButton title='New' />
 
 
