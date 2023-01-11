@@ -19,8 +19,8 @@ const HomeScreen = () => {
         })
     }, []);
     return (
-        <SafeAreaView className='bg-white my-5 pb-5'>
-            <View className='flex-row items-center space-x-2 pb-2 mx-4'>
+        <SafeAreaView className='bg-white my-5 p-5'>
+            <View className='flex-row items-center space-x-2 pb-2'>
                 <Image source={{
                     uri: 'https://media.istockphoto.com/id/1357723739/photo/studio-portrait-of-a-smiling-young-latin-woman.jpg?b=1&s=170667a&w=0&k=20&c=RIMvJI9S1mZytKJydukxUF4hRoyVbR1W3ix6gsdo72I='
                 }}
