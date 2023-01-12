@@ -1,14 +1,16 @@
 import { View, Text, ScrollView, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { useNavigation, useRoute } from '@react-navigation/native';
-import { useLayoutEffect } from 'react';
+import { useLayoutEffect, useState, useEffect } from 'react';
 import { AntDesign } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 import Categories from './../components/Categories';
 import PetCard from '../components/PetCard';
-
+import client from '../petClient';
 
 const ShelterScreen = () => {
+
+    const [petData, setPetData] = useState([]);
     const navigation = useNavigation();
 
     const { params: {
@@ -20,6 +22,37 @@ const ShelterScreen = () => {
             headerShown: false,
         })
     })
+
+    useEffect(() => {
+        async function fetchData() {
+            await client.animal.search({
+                // type: 'Cat',
+            }).then((data) => setPetData(data?.data.animals))
+        }
+        fetchData();
+        console.log(petData);
+    }, [])
+
+    const showPets = petData.map(pet => (
+        <PetCard
+            key={pet?.id}
+            name={pet?.name}
+            age={pet?.age}
+            img={pet?.photos[0]?.large}
+            gender={pet?.gender}
+            size={pet?.size}
+            tag={pet?.tags[0]}
+            info={pet?.description}
+            species={pet?.species}
+            city={pet?.contact.address.city}
+            state={pet?.contact.address.state}
+            postcode={pet?.contact.address.postcode}
+            country={pet?.contact.address.country}
+        />
+    ))
+
+    console.log(showPets);
+
     return (
         <ScrollView className='bg-white relative'>
             <View>
@@ -52,8 +85,8 @@ const ShelterScreen = () => {
                 <Categories />
             </View>
             <ScrollView className="p-5">
-                <PetCard />
-                <PetCard />
+
+                {showPets}
 
 
             </ScrollView>
