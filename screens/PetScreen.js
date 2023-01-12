@@ -1,6 +1,6 @@
 import { View, Text, ScrollView, Image, TouchableOpacity, Button } from 'react-native';
 import React from 'react';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import { useLayoutEffect } from 'react';
 import { AntDesign } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
@@ -8,6 +8,10 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 const PetScreen = () => {
     const navigation = useNavigation();
+
+    const { params: {
+        name, age, img, location, gender, size, tag, info, species
+    } } = useRoute();
 
     useLayoutEffect(() => {
         navigation.setOptions({
@@ -18,7 +22,7 @@ const PetScreen = () => {
         <ScrollView className='bg-white relative'>
             <View>
                 <Image source={{
-                    uri: "https://images.unsplash.com/photo-1615751072497-5f5169febe17?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y3V0ZSUyMGRvZ3xlbnwwfHwwfHw%3D&w=1000&q=80"
+                    uri: img
                 }}
                     className="w-full h-72 bg-gray-300 p-4"
                 />
@@ -36,31 +40,33 @@ const PetScreen = () => {
                 <Ionicons name="share-social-outline" size={24} color="white" />
             </TouchableOpacity>
             <ScrollView className="px-5 pb-5">
-                <View className="mb-2">
-                    <Text className="font-bold text-lg pt-6">Doggo <Text className="font-thin text-sm text-gray-500 pt-6">3 years old</Text></Text>
+                <View className="mb-2 flex-row items-center space-x-1">
+                    <Text className="font-bold text-lg pt-6">{name} </Text>
+                    <Text className="font-thin text-lg text-gray-500 pt-6">{age}</Text>
+                    <Text className="font-bold text-lg text-gray-800 pt-6 pl-2">{species}</Text>
                 </View>
 
                 <View className="flex-row items-center ">
                     <Ionicons name="location-outline" size={16} color="gray" />
-                    <Text className="text-xs text-gray-400">15 km away</Text>
+                    <Text className="text-xs text-gray-400">{location} 15 km away</Text>
                 </View>
                 <View className="flex-row mt-2 mb-5 space-x-5">
                     <View className="flex-row items-center">
                         <Ionicons name="male" size={20} color="#166534" />
-                        <Text className="text-sm text-gray-700 pl-1">Male</Text>
+                        <Text className="text-sm text-gray-700 pl-1">{gender}</Text>
                     </View>
                     <View className="flex-row items-center">
 
                         <MaterialCommunityIcons name="weight" size={19} color="#166534" />
-                        <Text className="text-sm text-gray-700 pl-1">Medium</Text>
+                        <Text className="text-sm text-gray-700 pl-1">{size}</Text>
                     </View>
                     <View className="flex-row items-center">
                         <Ionicons name="basketball-outline" size={20} color="#166534" />
-                        <Text className="text-sm text-gray-700 pl-1">Male</Text>
+                        <Text className="text-sm text-gray-700 pl-1">{tag}</Text>
                     </View>
                 </View>
                 <View className="mb-8">
-                    <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae illum itaque dicta libero nam exercitationem reiciendis dolorum, nisi voluptatibus! Explicabo minus similique, nostrum dolore dolorum blanditiis atque ullam dignissimos. Nostrum, laborum doloremque? Est neque sunt praesentium quia, cum dolore incidunt enim dolorum fuga qui, blanditiis, aliquam quaerat adipisci. Officiis, suscipit!</Text>
+                    <Text>{info}</Text>
                 </View>
                 <View className="flex space-y-3 mb-8">
                     <View className="flex-row items-center">
@@ -89,7 +95,7 @@ const PetScreen = () => {
                 <View>
                     <Text>I'm here now</Text>
                     <Text>Animal Shelter Name</Text>
-                    <Text>Paw Street, 61-700, Poznan Poland</Text>
+                    <Text>{location}</Text>
                 </View>
 
                 <View className="bg-slate-500">
