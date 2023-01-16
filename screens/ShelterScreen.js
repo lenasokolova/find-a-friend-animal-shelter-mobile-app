@@ -26,7 +26,6 @@ const ShelterScreen = () => {
     useEffect(() => {
         async function fetchData() {
             await client.animal.search({
-                // type: 'Cat',
             }).then((data) => setPetData(data?.data.animals))
         }
         fetchData();
@@ -34,21 +33,28 @@ const ShelterScreen = () => {
     }, [])
 
     const showPets = petData.map(pet => (
-        <PetCard
+        <TouchableOpacity
             key={pet?.id}
-            name={pet?.name}
-            age={pet?.age}
-            img={pet?.photos[0]?.large}
-            gender={pet?.gender}
-            size={pet?.size}
-            tag={pet?.tags[0]}
-            info={pet?.description}
-            species={pet?.species}
-            city={pet?.contact.address.city}
-            state={pet?.contact.address.state}
-            postcode={pet?.contact.address.postcode}
-            country={pet?.contact.address.country}
-        />
+            className="bg-white shadow-md rounded-2xl relative mb-5">
+            <PetCard
+
+                key={pet?.id}
+                name={pet?.name}
+                age={pet?.age}
+                img={pet?.photos[0]?.large}
+                gender={pet?.gender}
+                size={pet?.size}
+                tag={pet?.tags[0]}
+                info={pet?.description}
+                species={pet?.species}
+                city={pet?.contact.address.city}
+                state={pet?.contact.address.state}
+                postcode={pet?.contact.address.postcode}
+                country={pet?.contact.address.country}
+                addressFirst={pet?.contact.address.address1}
+                addressSecond={pet?.contact.address.address2}
+            />
+        </TouchableOpacity>
     ))
 
     console.log(showPets);
