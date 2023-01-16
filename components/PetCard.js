@@ -5,17 +5,17 @@ import { AntDesign } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-const PetCard = ({ name, age, img, city, gender, size, tag, info, species, postcode, state, country }) => {
+const PetCard = ({ name, age, img, city, gender, size, tag, info, species, postcode, state, country, addressFirst, addressSecond }) => {
     const navigation = useNavigation();
 
     return (
         <TouchableOpacity
             onPress={() => {
                 navigation.navigate('Pet', {
-                    name, age, img, city, gender, size, tag, info, species, postcode, state, country
+                    name, age, img, city, gender, size, tag, info, species, postcode, state, country, addressFirst, addressSecond
                 })
             }}
-            className="bg-white shadow-md rounded-2xl relative mb-5"
+
         >
             {img ? <Image source={{
                 uri: img
@@ -25,8 +25,9 @@ const PetCard = ({ name, age, img, city, gender, size, tag, info, species, postc
                 className="h-72 w-full rounded-tl-2xl rounded-tr-2xl object-contain"
             />}
 
-            <View className="p-3 absolute bottom-24 right-6 bg-white rounded-full shadow-sm">
-                <AntDesign name="hearto" size={20} color="black" />
+
+            <View className="p-3 absolute bottom-24 right-7 bg-white rounded-full shadow-sm">
+                <AntDesign name="hearto" size={24} color="black" />
             </View>
 
             <View className="px-5 pb-5">
@@ -36,14 +37,16 @@ const PetCard = ({ name, age, img, city, gender, size, tag, info, species, postc
                     <Text className="font-bold text-lg text-gray-800 pt-6 pl-2">{species}</Text>
                 </View>
 
-                <View className="flex-row items-center ">
+                <View className="flex-row items-center space-x-2 ">
                     <Ionicons name="location-outline" size={16} color="#166534" />
-                    <Text className="text-xs text-gray-400">{city}, {state}, {country} 15 km away</Text>
+                    <Text className="text-xs text-gray-400">{city}, {state}, {country}</Text>
+
+                    {addressFirst || addressSecond ? <Text className="text-xs text-gray-600">{addressFirst || addressSecond}</Text> : <Text className="text-xs text-gray-600 font-bold">Ask about address</Text>}
+
                 </View>
                 <View className="flex-row mt-2 space-x-5">
                     <View className="flex-row items-center">
                         {gender == 'Male' ? <Ionicons name="male" size={20} color="#166534" /> : <Ionicons name="female" size={20} color="#166534" />}
-                        {/* <Ionicons name="male" size={20} color="#166534" /> */}
                         <Text className="text-sm text-gray-700 pl-1">{gender}</Text>
                     </View>
                     <View className="flex-row items-center">
