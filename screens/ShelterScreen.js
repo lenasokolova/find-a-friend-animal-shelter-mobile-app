@@ -30,7 +30,7 @@ const ShelterScreen = () => {
         }
         fetchData();
         console.log(petData);
-    }, [])
+    }, []);
 
     const showPets = petData.map(pet => (
         <TouchableOpacity
@@ -91,7 +91,6 @@ const ShelterScreen = () => {
                 <Categories />
             </View>
             <ScrollView className="p-5">
-
                 {showPets}
 
 
