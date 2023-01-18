@@ -110,7 +110,7 @@ const CustomForm = () => {
     }
 
     return (
-        <SafeAreaView className="flex-1 items-center justify-center ">
+        <SafeAreaView className="flex-1 items-center justify-center">
             <View className="w-4/5 items-center bg-white p-10 rounded-xl shadow-sm">
                 <View className="w-full">
                     <Text className="mb-3 font-bold text-lg">SIGN {!isSignUpForm ? 'IN' : 'UP'} FORM for {isShelter ? 'animal shelters' : 'users'}</Text>
@@ -199,7 +199,11 @@ const CustomForm = () => {
 
                                 <View>
                                     <Button
-                                        onPress={() => { handleSubmit(); addUserToDb(); navigation.navigate('Home', { ref }); }}
+                                        onPress={() => {
+                                            handleSubmit(); addUserToDb(); navigation.navigate('Home',
+                                                // { ref }
+                                            );
+                                        }}
                                         title={isSignUpForm ? "SIGN UP" : "SIGN IN"}
                                         disabled={!isValid}
                                         color="green"
