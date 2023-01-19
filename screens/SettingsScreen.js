@@ -21,7 +21,7 @@ const SettingsScreen = () => {
                 </View>
                 <View className="p-5 bg-green-100 flex items-center">
                     <Text className="text-xl text-center">Is there a new commer in your shelter?</Text>
-                    <Text className="text-2xl font-bold text-center mb-3">Let's hep him to find a new home!</Text>
+                    <Text className="text-2xl font-bold text-center mb-3">Let's help him to find a new home!</Text>
                     <TouchableOpacity
                         className="w-3/5 p-4 bg-black rounded-full"
                         onPress={() => navigation.navigate('AddPet')}
