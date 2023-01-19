@@ -7,6 +7,7 @@ import validationSchema from '../components/validationSchema';
 import { useRef } from 'react';
 import { Formik, Field } from 'formik';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import ImgPicker from './ImgPicker';
 
 const SettingsForm = () => {
     const navigation = useNavigation();
@@ -48,6 +49,7 @@ const SettingsForm = () => {
                         phoneNumber: '',
                         password: '',
                         confirmPassword: '',
+                        photoUrl: '',
                     }}
                     validationSchema={validationSchema}
                     onSubmit={(values) => console.log(values)}
@@ -58,14 +60,14 @@ const SettingsForm = () => {
                             <Field
                                 component={CustomInput}
                                 name="fullName"
-                                placeholder="  Current name from DB"
+                                placeholder="Current name from DB"
                             />
 
 
                             <Field
                                 component={CustomInput}
                                 name="email"
-                                placeholder="  Current email from DB"
+                                placeholder="Current email from DB"
                                 keyboardType="email-address"
                             />
 
@@ -73,14 +75,14 @@ const SettingsForm = () => {
                             <Field
                                 component={CustomInput}
                                 name="phoneNumber"
-                                placeholder="  Current phone number from DB"
+                                placeholder="Current phone number from DB"
                                 keyboardType="numeric"
                             />
 
                             <Field
                                 component={CustomInput}
                                 name="password"
-                                placeholder="  Current password from DB"
+                                placeholder="Current password from DB"
                                 secureTextEntry
                             />
 
@@ -88,9 +90,16 @@ const SettingsForm = () => {
                             <Field
                                 component={CustomInput}
                                 name="confirmPassword"
-                                placeholder="  Confirm New Password"
+                                placeholder="Confirm New Password"
                                 secureTextEntry
                             />
+
+                            <Field
+                                component={CustomInput}
+                                name="photoUrl"
+                                placeholder="Paste new url photo here..."
+                            />
+                            <ImgPicker />
 
                             <View className="flex-row justify-end space-x-5">
                                 <View>
