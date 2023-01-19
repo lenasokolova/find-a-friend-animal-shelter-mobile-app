@@ -3,6 +3,7 @@ import React from 'react';
 
 const CustomInput = (props) => {
 
+
     const {
         field: { name, onBlur, onChange, value },
         form: { errors, touched, setFieldTouched },
@@ -15,7 +16,8 @@ const CustomInput = (props) => {
     return (
         <>
             <TextInput
-                className={`w-full h-12 my-3 bg-white border rounded-md
+                style={[props.multiline && { height: props.numberOfLines * 40, textAlignVertical: 'top', paddingTop: 12 }]}
+                className={`w-full h-12 my-3 pl-5 bg-white border rounded-md
                 ${errorBorder}`}
 
                 value={value}
