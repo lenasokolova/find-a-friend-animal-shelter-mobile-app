@@ -8,7 +8,9 @@ import { useRef } from 'react';
 import { Formik, Field } from 'formik';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { SelectList } from 'react-native-dropdown-select-list';
-import { MultipleSelectList } from 'react-native-dropdown-select-list'
+import { MultipleSelectList } from 'react-native-dropdown-select-list';
+import ImgPicker from './ImgPicker';
+
 
 const AddPetToShelterForm = () => {
     const navigation = useNavigation();
@@ -42,6 +44,7 @@ const AddPetToShelterForm = () => {
     }, []);
 
     const ref = useRef(null);
+
     return (
         <SafeAreaView className='bg-white my-5 p-5'>
 
@@ -145,6 +148,13 @@ const AddPetToShelterForm = () => {
                                 multiline
                                 numberOfLines={3}
                             />
+                            <Field
+                                component={CustomInput}
+                                name="photoUrl"
+                                placeholder="Add photo url here..."
+                            />
+                            <ImgPicker />
+
                             <View className="flex-row justify-end space-x-5">
                                 <View>
                                     <Button
