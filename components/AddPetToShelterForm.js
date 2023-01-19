@@ -19,6 +19,8 @@ const AddPetToShelterForm = () => {
     const [selectedSize, setSelectedSize] = useState("");
     const [selectedTag, setSelectedTag] = useState("");
     const [selectedSpecies, setSelectedSpecies] = useState("");
+    const [selectedStatus, setSelectedStatus] = useState("");
+
 
     const selectedFieldStyles = { borderRadius: 6, marginBottom: 12, color: 'red' }
 
@@ -34,8 +36,11 @@ const AddPetToShelterForm = () => {
     const tag = [{ key: '13', value: 'Sensetive' },
     { key: '14', value: 'Playfull' }, { key: '15', value: 'Anxious' }, { key: '16', value: 'Calm' }, { key: '17', value: 'Stubborn' },];
 
-    const species = [{ key: '10', value: 'Dog' },
-    { key: '11', value: 'Cat' }, { key: '12', value: 'Other' },];
+    const species = [{ key: '18', value: 'Dog' },
+    { key: '19', value: 'Cat' }, { key: '20', value: 'Other' },];
+
+    const status = [{ key: '21', value: 'Ready for adoption' },
+    { key: '22', value: 'Requires quarantine' }, { key: '23', value: 'Adopted' },]
 
     useLayoutEffect(() => {
         navigation.setOptions({
@@ -65,11 +70,9 @@ const AddPetToShelterForm = () => {
 
                 <Formik
                     initialValues={{
-                        fullName: '',
-                        email: '',
-                        phoneNumber: '',
-                        password: '',
-                        confirmPassword: '',
+                        name: '',
+                        description: '',
+                        photoUrl: '',
                     }}
                     validationSchema={validationSchema}
                     onSubmit={(values) => console.log(values)}
@@ -88,6 +91,7 @@ const AddPetToShelterForm = () => {
                                 data={gender}
                                 save="value"
                                 boxStyles={selectedFieldStyles}
+                                placeholder="Please select a gender"
                             />
 
                             <SelectList
@@ -95,6 +99,7 @@ const AddPetToShelterForm = () => {
                                 data={age}
                                 save="value"
                                 boxStyles={selectedFieldStyles}
+                                placeholder="Please select an age"
                             />
 
                             <SelectList
@@ -102,6 +107,7 @@ const AddPetToShelterForm = () => {
                                 data={size}
                                 save="value"
                                 boxStyles={selectedFieldStyles}
+                                placeholder="Please select a size"
                             />
 
                             <SelectList
@@ -109,6 +115,15 @@ const AddPetToShelterForm = () => {
                                 data={species}
                                 save="value"
                                 boxStyles={selectedFieldStyles}
+                                placeholder="Please select an animal species"
+                            />
+
+                            <SelectList
+                                setSelected={(val) => setSelectedStatus(val)}
+                                data={status}
+                                save="value"
+                                boxStyles={selectedFieldStyles}
+                                placeholder="Please select a stage of the adoption process"
                             />
 
                             <MultipleSelectList
@@ -117,34 +132,14 @@ const AddPetToShelterForm = () => {
                                 save="value"
                                 label="Short Description"
                                 boxStyles={{ borderRadius: 6, marginBottom: 0 }}
-                            />
+                                placeholder="Please describe an animal (multiple choice)"
 
-                            <Field
-                                component={CustomInput}
-                                name="phoneNumber"
-                                placeholder="Current phone number from DB"
-                                keyboardType="numeric"
-                            />
-
-                            <Field
-                                component={CustomInput}
-                                name="password"
-                                placeholder="Current password from DB"
-                                secureTextEntry
-                            />
-
-
-                            <Field
-                                component={CustomInput}
-                                name="confirmPassword"
-                                placeholder="Confirm New Password"
-                                secureTextEntry
                             />
 
                             <Field
                                 component={CustomInput}
                                 name="description"
-                                placeholder="Describe pet..."
+                                placeholder="Please tell everyone why this animal is awesome..."
                                 multiline
                                 numberOfLines={3}
                             />
@@ -168,7 +163,7 @@ const AddPetToShelterForm = () => {
                                     <Button
                                         onPress={() => alert('New settings have been saved')}
                                         // onPress={() => { handleSubmit(); addUserToDb(); navigation.navigate('Home', { ref }); }}
-                                        title="Save new info"
+                                        title="Save pet to db"
                                         disabled={!isValid}
                                         color="green"
                                         type="submit"
